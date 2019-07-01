@@ -9,69 +9,65 @@ Tv tvFromJson(String str) => Tv.fromJson(json.decode(str));
 String tvToJson(Tv data) => json.encode(data.toJson());
 
 class Tv {
-  int voteCount;
-  int id;
-  bool video;
-  double voteAverage;
-  String title;
-  double popularity;
-  String posterPath;
-  String originalLanguage;
-  String originalTitle;
-  List<int> genreIds;
-  String backdropPath;
-  bool adult;
-  String overview;
-  DateTime releaseDate;
+    String originalName;
+    List<int> genreIds;
+    String name;
+    double popularity;
+    List<String> originCountry;
+    int voteCount;
+    DateTime firstAirDate;
+    String backdropPath;
+    String originalLanguage;
+    int id;
+    double voteAverage;
+    String overview;
+    String posterPath;
 
-  Tv({
-    this.adult,
-    this.backdropPath,
-    this.genreIds,
-    this.id,
-    this.originalLanguage,
-    this.originalTitle,
-    this.overview,
-    this.posterPath,
-    this.releaseDate,
-    this.title,
-    this.video,
-    this.voteAverage,
-    this.voteCount,
-    this.popularity,
-  });
+    Tv({
+        this.originalName,
+        this.genreIds,
+        this.name,
+        this.popularity,
+        this.originCountry,
+        this.voteCount,
+        this.firstAirDate,
+        this.backdropPath,
+        this.originalLanguage,
+        this.id,
+        this.voteAverage,
+        this.overview,
+        this.posterPath,
+    });
 
-  factory Tv.fromJson(Map<String, dynamic> json) => new Tv(
-    adult: json["adult"],
-    backdropPath: json["backdrop_path"],
-    genreIds: new List<int>.from(json["genre_ids"].map((x) => x)),
-    id: json["id"],
-    originalLanguage: json["original_language"],
-    originalTitle: json["original_title"],
-    overview: json["overview"],
-    posterPath: json["poster_path"],
-    releaseDate: DateTime.parse(json["release_date"]),
-    title: json["title"],
-    video: json["video"],
-    voteAverage: json["vote_average"].toDouble(),
-    voteCount: json["vote_count"],
-    popularity: json["popularity"].toDouble(),
-  );
+    factory Tv.fromJson(Map<String, dynamic> json) => new Tv(
+        originalName: json["original_name"],
+        genreIds: new List<int>.from(json["genre_ids"].map((x) => x)),
+        name: json["name"],
+        popularity: json["popularity"].toDouble(),
+        // originCountry: new List<String>.from(json["origin_country"].map((x) => x)),
+        voteCount: json["vote_count"],
+        firstAirDate: DateTime.parse(json["first_air_date"]),
+        backdropPath: json["backdrop_path"],
+        originalLanguage: json["original_language"],
+        id: json["id"],
+        voteAverage: json["vote_average"].toDouble(),
+        overview: json["overview"],
+        posterPath: json["poster_path"],
+    );
 
-  Map<String, dynamic> toJson() => {
-    "adult": adult,
-    "backdrop_path": backdropPath,
-    "genre_ids": new List<dynamic>.from(genreIds.map((x) => x)),
-    "id": id,
-    "original_language": originalLanguage,
-    "original_title": originalTitle,
-    "overview": overview,
-    "poster_path": posterPath,
-    "release_date": "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
-    "title": title,
-    "video": video,
-    "vote_average": voteAverage,
-    "vote_count": voteCount,
-    "popularity": popularity,
-  };
+    Map<String, dynamic> toJson() => {
+        "original_name": originalName,
+        "genre_ids": new List<dynamic>.from(genreIds.map((x) => x)),
+        "name": name,
+        "popularity": popularity,
+        "origin_country": new List<dynamic>.from(originCountry.map((x) => x)),
+        "vote_count": voteCount,
+        "first_air_date": "${firstAirDate.year.toString().padLeft(4, '0')}-${firstAirDate.month.toString().padLeft(2, '0')}-${firstAirDate.day.toString().padLeft(2, '0')}",
+        "backdrop_path": backdropPath,
+        "original_language": originalLanguage,
+        "id": id,
+        "vote_average": voteAverage,
+        "overview": overview,
+        "poster_path": posterPath,
+    };
 }

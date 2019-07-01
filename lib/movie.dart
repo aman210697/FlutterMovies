@@ -55,7 +55,7 @@ class Movie {
         backdropPath: json["backdrop_path"],
         adult: json["adult"],
         overview: json["overview"],
-        releaseDate: DateTime.parse(json["release_date"]),
+        // releaseDate: DateTime.parse(json["release_date"]),
     );
 
     Map<String, dynamic> toJson() => {
